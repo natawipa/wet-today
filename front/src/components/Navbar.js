@@ -1,23 +1,24 @@
-// Still unuseable
-
 import React from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import './Navbar.css';
 
-function NavigationBar() {
+export default function Navbar() {
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
-      <Container>
-        <Navbar.Brand href="/">WeatherSense</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/data-visualize">Data Visualize</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <nav>
+      <div className="container">
+        <div className="logo">WeatherToday</div>
+        <ul>
+          <li>
+            <Link to="/" className="home">Home</Link>
+          </li>
+          <li>
+            <Link to="/api" className="api">API</Link>
+          </li>
+          <li>
+            <Link to="/visualize" className="visualize">Data Visualize</Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
   );
 }
-
-export default NavigationBar;
