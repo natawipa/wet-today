@@ -4,4 +4,4 @@
 from __future__ import absolute_import
 # import models into model package
 from swagger_server.models.wet_kb import WetKB
-from swagger_server.models.wet_today import WetToday
+from swagger_server.models.wet_tmd import WetToday
