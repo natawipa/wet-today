@@ -3,12 +3,12 @@ info:
   title: Rain Today API
   version: 1.0.0
 servers:
-- url: /rain-api
+  - url: /rain-api
 paths:
   /wet-today:
     get:
-      summary: Returns all records from the wet_today table.
-      operationId: controller.get_wet_today
+      summary: Returns all records from the wet_tmd table.
+      operationId: controller.get_wet_tmd
       responses:
         200:
           description: Success
@@ -17,18 +17,18 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/WetToday'
+                  $ref: "#/components/schemas/WetToday"
   /wet-today/{date}:
     parameters:
-    - name: date
-      in: path
-      required: true
-      schema:
-        type: string
-        format: date
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+          format: date
     get:
-      summary: Returns wet_today records for the specified date.
-      operationId: controller.get_wet_today_by_date
+      summary: Returns wet_tmd records for the specified date.
+      operationId: controller.get_wet_tmd_by_date
       responses:
         200:
           description: Success
@@ -37,7 +37,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/WetToday'
+                  $ref: "#/components/schemas/WetToday"
   /wet-kb:
     get:
       summary: Returns all records from the wet_kb table.
@@ -50,15 +50,15 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/WetKB'
+                  $ref: "#/components/schemas/WetKB"
   /wet-kb/{date}:
     parameters:
-    - name: date
-      in: path
-      required: true
-      schema:
-        type: string
-        format: date
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+          format: date
     get:
       summary: Returns wet_kb records for the specified date.
       operationId: controller.get_wet_kb_by_date
@@ -70,7 +70,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/WetKB'
+                  $ref: "#/components/schemas/WetKB"
 
 components:
   schemas:

@@ -1,6 +1,8 @@
 import sys
 import os
 from flask_cors import CORS  # Import CORS for handling cross-origin requests
+from controller import get_weather_from_openweathermap
+
 
 if not os.path.exists("config.py"):
     print("Configuration 'config.py' not found.  "
@@ -32,6 +34,9 @@ def main():
     app.add_api('rain-today.yaml',
                 arguments={'title': 'Rain Today API'},
                 pythonic_params=True)
+
+    # Add the weather endpoint
+    app.app.add_url_rule('/api/weather', 'get_weather_from_openweathermap', get_weather_from_openweathermap, methods=['GET'])
 
     app.run(port=8080, debug=True)
 

@@ -2,7 +2,7 @@ import connexion
 import six
 
 from swagger_server.models.wet_kb import WetKB  # noqa: E501
-from swagger_server.models.wet_today import WetToday  # noqa: E501
+from swagger_server.models.wet_tmd import WetToday  # noqa: E501
 from swagger_server import util
 
 
@@ -31,8 +31,8 @@ def controller_get_wet_kb_by_date(_date):  # noqa: E501
     return 'do some magic!'
 
 
-def controller_get_wet_today():  # noqa: E501
-    """Returns all records from the wet_today table.
+def controller_get_wet_tmd():  # noqa: E501
+    """Returns all records from the wet_tmd table.
 
      # noqa: E501
 
@@ -42,8 +42,8 @@ def controller_get_wet_today():  # noqa: E501
     return 'do some magic!'
 
 
-def controller_get_wet_today_by_date(_date):  # noqa: E501
-    """Returns wet_today records for the specified date.
+def controller_get_wet_tmd_by_date(_date):  # noqa: E501
+    """Returns wet_tmd records for the specified date.
 
      # noqa: E501
 

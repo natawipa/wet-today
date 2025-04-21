@@ -3,12 +3,12 @@ info:
   title: Rain Today API
   version: 1.0.0
 servers:
-- url: /rain-api
+  - url: /rain-api
 paths:
   /wet-today:
     get:
-      summary: Returns all records from the wet_today table.
-      operationId: controller_get_wet_today
+      summary: Returns all records from the wet_tmd table.
+      operationId: controller_get_wet_tmd
       responses:
         "200":
           description: Success
@@ -22,17 +22,17 @@ paths:
       x-openapi-router-controller: swagger_server.controllers.default_controller
   /wet-today/{date}:
     get:
-      summary: Returns wet_today records for the specified date.
-      operationId: controller_get_wet_today_by_date
+      summary: Returns wet_tmd records for the specified date.
+      operationId: controller_get_wet_tmd_by_date
       parameters:
-      - name: date
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          format: date
+        - name: date
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: date
       responses:
         "200":
           description: Success
@@ -64,14 +64,14 @@ paths:
       summary: Returns wet_kb records for the specified date.
       operationId: controller_get_wet_kb_by_date
       parameters:
-      - name: date
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          format: date
+        - name: date
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: date
       responses:
         "200":
           description: Success
@@ -139,4 +139,3 @@ components:
         id: 0
         longitude: 1.4658129
         timestamp: 2000-01-23T04:56:07.000+00:00
-
