@@ -59,7 +59,7 @@ export default function API() {
     <div style={{ padding: '1rem' }}>
       <h1>API Overview</h1>
       <p>
-        This page allows you to view data from the TMD and KidBright APIs. You can select a specific API or view data from both APIs. Additionally, you can filter data by date.
+        This page allows you to view data from the TMD and KidBright APIs. You can select a specific API or view data from both APIs. Additionally, you can filter data by date (from 26th March 2025 to 17th April 2025).
       </p>
 
       {/* API Selector */}

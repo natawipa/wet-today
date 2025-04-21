@@ -11,8 +11,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/api" element={<API />} />
-        {/* <Route path="/api/tmd" element={<TMD />} />
-        <Route path="/api/kidbright" element={<KidBright />} /> */}
         <Route path="/visualize" element={<Visualize />} />
       </Routes>
     </Router>
