@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 import cloudImage from "../components/cloud.png";
 import ComparisonGraph from "../components/ComparisonGraph";
-import CompareGraph from "../components/comparegraph";
 import Card from "../components/Card";
 import LongCard from "../components/LongCard";
 
@@ -30,18 +29,35 @@ export default function Home() {
     };
 
     const fetchComparisonData = async () => {
+      setLoading(true);
+      setError(null);
+
       try {
-        const kbResponse = await fetch("http://127.0.0.1:8080/api/kb");
-        const tmdResponse = await fetch("http://127.0.0.1:8080/api/tmd");
+        // Fetch both APIs in parallel
+        const [kbResponse, tmdResponse] = await Promise.all([
+          fetch("http://127.0.0.1:8080/rain-api/wet-kb"),
+          fetch("http://127.0.0.1:8080/rain-api/wet-today"),
+        ]);
+
         if (!kbResponse.ok || !tmdResponse.ok) {
           throw new Error("Failed to fetch comparison data");
         }
-        const kbData = await kbResponse.json();
-        const tmdData = await tmdResponse.json();
+
+        const [kbData, tmdData] = await Promise.all([
+          kbResponse.json(),
+          tmdResponse.json(),
+        ]);
+
+        console.log("KB Data:", kbData);
+        console.log("TMD Data:", tmdData);
+
         setKbData(kbData);
         setTmdData(tmdData);
       } catch (err) {
         console.error(err.message);
+        setError(err.message);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -77,9 +93,10 @@ export default function Home() {
             </div>
           )}
         </div>
+        
       </Card>
-      <LongCard title="Temperature vs Humidity Comparison">
-        <CompareGraph kbData={kbData} tmdData={tmdData} />
+      <LongCard title="Humidity Comparison">
+        <ComparisonGraph kbData={kbData} tmdData={tmdData} />
       </LongCard>
     </div>
   );

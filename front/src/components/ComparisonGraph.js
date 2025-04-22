@@ -29,7 +29,7 @@ export default function ComparisonGraph({ kbData, tmdData }) {
       return {
         label,
         data: data.map((item) => ({
-          x: item.temperature,
+          x: item.timestamp,
           y: item.humidity,
           rain: item.rainfall24hr > 0,
         })),
@@ -59,7 +59,7 @@ export default function ComparisonGraph({ kbData, tmdData }) {
 
   return (
     <div className="comparison-graph">
-      <h3>Temperature vs Humidity Comparison</h3>
+      <h3>Humidity Comparison</h3>
       <Line
         data={prepareGraphData(kbData, tmdData)}
         options={{
@@ -69,7 +69,7 @@ export default function ComparisonGraph({ kbData, tmdData }) {
           },
           scales: {
             x: {
-              title: { display: true, text: 'Temperature (°C)' },
+              title: { display: true, text: 'Datetime' },
             },
             y: {
               title: { display: true, text: 'Humidity (%)' },

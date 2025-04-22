@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Card from '../components/Card';
 import TemperatureGraph from '../components/TemperatureGraph';
 import HumidityGraph from '../components/HumidityGraph';
-import RainfallGraph from '../components/RainfallGraph';
+import RainfallGraph from '../components/RainGraph';
 
 export default function Visualize() {
   const [selectedAPI, setSelectedAPI] = useState('all');
