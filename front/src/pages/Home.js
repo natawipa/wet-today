@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 import cloudImage from "../components/cloud.png";
 import ComparisonGraph from "../components/ComparisonGraph";
+import CompareGraph from "../components/comparegraph";
 import Card from "../components/Card";
 import LongCard from "../components/LongCard";
 
@@ -48,8 +49,14 @@ export default function Home() {
     fetchComparisonData();
   }, []);
 
+  // Safe humidity value calculation
+  const humidityValue = weather 
+    ? Number(weather.humidity?.toString().replace(/[^0-9.]/g, '') || 0)
+    : 0;
+
   if (loading) return <h1>Loading...</h1>;
   if (error) return <h1>Error: {error}</h1>;
+  if (!weather) return <h1>No weather data available</h1>;
 
   return (
     <div className="home-container">
@@ -62,10 +69,17 @@ export default function Home() {
           <p>Condition: {weather.condition}</p>
           <p>Humidity: {weather.humidity}</p>
           <p>Wind Speed: {weather.wind_speed}</p>
+          {humidityValue >= 70 && (
+            <div className="humidity-warning">
+              <span>⚠️ High humidity!</span>
+              <p>People with respiratory</p>
+              <span>disease please be careful.</span>
+            </div>
+          )}
         </div>
       </Card>
       <LongCard title="Temperature vs Humidity Comparison">
-        <ComparisonGraph kbData={kbData} tmdData={tmdData} />
+        <CompareGraph kbData={kbData} tmdData={tmdData} />
       </LongCard>
     </div>
   );
