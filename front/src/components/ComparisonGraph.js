@@ -45,9 +45,9 @@ export default function ComparisonGraph({ kbData, tmdData }) {
       };
     };
 
-    if (kbData) {
-      datasets.push(processData(kbData, 'KB Data', 'rgba(54, 162, 235, 1)'));
-    }
+    // if (kbData) {
+    //   datasets.push(processData(kbData, 'KB Data', 'rgba(54, 162, 235, 1)'));
+    // }
     if (tmdData) {
       datasets.push(processData(tmdData, 'TMD Data', 'rgba(75, 192, 192, 1)'));
     }
