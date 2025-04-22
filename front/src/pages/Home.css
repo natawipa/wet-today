@@ -13,3 +13,12 @@
   width: 100px;
   margin-bottom: 10px;
 }
+
+.humidity-warning {
+  color: rgb(255, 128, 128);
+  font-weight: bold;
+  background-color: #ffeeee;
+  padding: 5px;
+  border-radius: 4px;
+  margin: 5px 0;
+}
